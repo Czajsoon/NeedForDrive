@@ -1,15 +1,42 @@
-#include <SFML/graphics.hpp>
+#include "Engine.h"
+#include "Menu.h"
+#include "Framerate.h"
+#include <iostream>
 
 int main() {
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "title");
+	Engine engine;
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "title"); 
+	Menu menu(window.getSize().x, window.getSize().y);
 	sf::Event event;
-	while (window.isOpen()) {
+	sf::Clock clock;
+	
+	while (window.isOpen()) { 
+		
 		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
+			switch (event.type) {
+			case sf::Event::KeyReleased: {
+				switch (event.key.code) {
+				case sf::Keyboard::Up:
+					menu.moveUP();
+					break;
+				case sf::Keyboard::Down:
+					menu.moveDOWN();
+					break;
+				}
+				break;
+			}
+			case sf::Event::Closed: {
 				window.close();
+				break;
+			}	
 			}
 		}
+		window.clear();
+		menu.draw(window);
+		window.display();
+		clock.restart();
 	}
+	
+	
 	return 0;
-
 }
