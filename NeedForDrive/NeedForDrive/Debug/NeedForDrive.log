@@ -1,12 +1,1 @@
-﻿  Menu.cpp
-D:\SFML\NeedForDrive\NeedForDrive\NeedForDrive\Menu.cpp(11,80): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-D:\SFML\NeedForDrive\NeedForDrive\NeedForDrive\Menu.cpp(21,80): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  NeedForDrive.vcxproj -> D:\SFML\NeedForDrive\NeedForDrive\Debug\NeedForDrive.exe
+﻿  NeedForDrive.vcxproj -> C:\Users\Dawid-PC\Documents\Projekt_grafika\NeedForDrive\NeedForDrive\Debug\NeedForDrive.exe
