@@ -5,7 +5,7 @@
 
 int main() {
 	Engine engine;
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "title"); 
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "NeedForDrive"); 
 	Menu menu(window.getSize().x, window.getSize().y);
 	sf::Event event;
 	sf::Clock clock;
@@ -21,6 +21,9 @@ int main() {
 					break;
 				case sf::Keyboard::Down:
 					menu.moveDOWN();
+					break;
+				case sf::Keyboard::Enter:
+					menu.performAction(window);
 					break;
 				}
 				break;

@@ -3,10 +3,17 @@
 
 Menu::Menu(float width, float height) {
 	itemIndex = 0;
-	if (!font.loadFromFile("arial.ttf")) {
+	if (!font.loadFromFile("ARCADECLASSIC.ttf")) {
 		//handle error
 	}
+	if (!backgroundImage.loadFromFile("background.png")) {
+		//handle error
+	}
+	background.setTexture(backgroundImage);
+	background.setScale(sf::Vector2f(0.35, 0.35));
+	menuItem[0].setScale(sf::Vector2f(2,2));
 	menuItem[0].setString("Zagraj");
+	//menuItem[0].setCharacterSize(50);
 	menuItem[0].setFillColor(sf::Color(255, 0, 0, 255));
 	menuItem[0].setPosition(sf::Vector2f(width / 2, height / (MAX_MENU_ITEMS * 1) * 0.5));
 	menuItem[0].setFont(font);
@@ -27,6 +34,7 @@ Menu::~Menu() {
 }
 
 void Menu::draw(sf::RenderWindow& window) {
+	window.draw(background);
 	for (int i = 0; i < MAX_MENU_ITEMS; i++) {
 		window.draw(menuItem[i]);
 	}
@@ -45,5 +53,17 @@ void Menu::moveDOWN() {
 		menuItem[itemIndex].setFillColor(sf::Color(255, 255, 255, 255));
 		itemIndex++;
 		menuItem[itemIndex].setFillColor(sf::Color(255, 0, 0, 255));
+	}
+}
+
+void Menu::performAction(sf::RenderWindow& window) {
+	switch (itemIndex) {
+	case 0:
+		break;
+	case 1:
+		break;
+	case 2:
+		window.close();
+		break;
 	}
 }
