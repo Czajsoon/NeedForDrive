@@ -35,11 +35,9 @@ int main() {
 			}
 		}
 		window.clear();
-		menu.draw(window);
+		menu.drawMenu(window);
 		window.display();
 		clock.restart();
 	}
-	
-	
 	return 0;
 }

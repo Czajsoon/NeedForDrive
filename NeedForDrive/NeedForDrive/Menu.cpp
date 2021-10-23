@@ -1,8 +1,20 @@
 #include "Menu.h"
 #include "Engine.h"
+#include <cmath>
+#include <iostream>
 
-Menu::Menu(float width, float height) {
+Menu::Menu(int width, int height) {
+	settingsResolution = 0;
+	resolutions[0].width = 1280;
+	resolutions[0].height = 720;
+	resolutions[1].width = 1920;
+	resolutions[1].height = 1080;
+	resolutions[2].width = 1440;
+	resolutions[2].height = 900;
 	itemIndex = 0;
+	settingsIndex = 0;
+	settings = false;
+	fullscreen = false;
 	if (!font.loadFromFile("ARCADECLASSIC.ttf")) {
 		//handle error
 	}
@@ -11,59 +23,135 @@ Menu::Menu(float width, float height) {
 	}
 	background.setTexture(backgroundImage);
 	background.setScale(sf::Vector2f(0.35, 0.35));
-	menuItem[0].setScale(sf::Vector2f(2,2));
 	menuItem[0].setString("Zagraj");
-	//menuItem[0].setCharacterSize(50);
+	menuItem[0].setCharacterSize(70);
 	menuItem[0].setFillColor(sf::Color(255, 0, 0, 255));
-	menuItem[0].setPosition(sf::Vector2f(width / 2, height / (MAX_MENU_ITEMS * 1) * 0.5));
-	menuItem[0].setFont(font);
+	menuItem[0].setPosition(sf::Vector2f(0, height / (MAX_MENU_ITEMS * 1) * 0.5));
+	menuItem[0].setFont(font); 
+	menuItem[0].setOutlineColor(sf::Color(0, 0, 0, 255));
+	menuItem[0].setOutlineThickness(3);
 
 	menuItem[1].setString("Ustawienia");
 	menuItem[1].setFillColor(sf::Color(255, 255, 255, 255));
-	menuItem[1].setPosition(sf::Vector2f(width / 2, height / (MAX_MENU_ITEMS * 1) * 1));
+	menuItem[1].setCharacterSize(70);
+	menuItem[1].setPosition(sf::Vector2f(0, height / (MAX_MENU_ITEMS * 1) * 1));
 	menuItem[1].setFont(font);
+	menuItem[1].setOutlineColor(sf::Color(0, 0, 0, 255));
+	menuItem[1].setOutlineThickness(3);
 
 	menuItem[2].setString("Wyjdz");
 	menuItem[2].setFillColor(sf::Color(255, 255, 255, 255));
-	menuItem[2].setPosition(sf::Vector2f(width / 2, height / (MAX_MENU_ITEMS * 1) * 1.5));
+	menuItem[2].setCharacterSize(70);
+	menuItem[2].setPosition(sf::Vector2f(0, height / (MAX_MENU_ITEMS * 1) * 1.5));
 	menuItem[2].setFont(font);
+	menuItem[2].setOutlineColor(sf::Color(0, 0, 0, 255));
+	menuItem[2].setOutlineThickness(3);
+
+	settingsItem[0].setString("Rozdzielczosc - " + std::to_string(width) + " x " + std::to_string(height) +" +");
+	settingsItem[0].setFillColor(sf::Color(255, 0, 0, 255));
+	settingsItem[0].setCharacterSize(30);
+	settingsItem[0].setPosition(sf::Vector2f(0, height / (MAX_SETTINGS_ITEMS * 1) * 0.5));
+	settingsItem[0].setFont(font);
+	settingsItem[0].setOutlineColor(sf::Color(0, 0, 0, 255));
+	settingsItem[0].setOutlineThickness(3);
+
+	settingsItem[1].setString("Sterowanie");
+	settingsItem[1].setFillColor(sf::Color(255, 255, 255, 255));
+	settingsItem[1].setCharacterSize(30);
+	settingsItem[1].setPosition(sf::Vector2f(0, height / (MAX_SETTINGS_ITEMS * 1) * 1));
+	settingsItem[1].setFont(font);
+	settingsItem[1].setOutlineColor(sf::Color(0, 0, 0, 255));
+	settingsItem[1].setOutlineThickness(3);
+
+	settingsItem[2].setString("Powrot do menu");
+	settingsItem[2].setFillColor(sf::Color(255, 255, 255, 255));
+	settingsItem[2].setCharacterSize(30);
+	settingsItem[2].setPosition(sf::Vector2f(0, height / (MAX_SETTINGS_ITEMS * 1) * 1.5));
+	settingsItem[2].setFont(font);
+	settingsItem[2].setOutlineColor(sf::Color(0, 0, 0, 255));
+	settingsItem[2].setOutlineThickness(3);
 }
 
 Menu::~Menu() {
 
 }
 
-void Menu::draw(sf::RenderWindow& window) {
+void Menu::drawMenu(sf::RenderWindow& window) {
 	window.draw(background);
-	for (int i = 0; i < MAX_MENU_ITEMS; i++) {
-		window.draw(menuItem[i]);
+	if (!settings) {
+		for (int i = 0; i < MAX_MENU_ITEMS; i++) {
+			window.draw(menuItem[i]);
+		}
+	}
+	else {
+		for (int i = 0; i < MAX_SETTINGS_ITEMS; i++) {
+			window.draw(settingsItem[i]);
+		}
 	}
 }
 
 void Menu::moveUP() {
-	if (itemIndex - 1 >= 0) {
-		menuItem[itemIndex].setFillColor(sf::Color(255, 255, 255, 255));
-		itemIndex--;
-		menuItem[itemIndex].setFillColor(sf::Color(255, 0, 0, 255));
+	if (!settings) {
+		if (itemIndex - 1 >= 0) {
+			menuItem[itemIndex].setFillColor(sf::Color(255, 255, 255, 255));
+			itemIndex--;
+			menuItem[itemIndex].setFillColor(sf::Color(255, 0, 0, 255));
+		}
+	}
+	else {
+		if (settingsIndex - 1 >= 0) {
+			settingsItem[settingsIndex].setFillColor(sf::Color(255, 255, 255, 255));
+			settingsIndex--;
+			settingsItem[settingsIndex].setFillColor(sf::Color(255, 0, 0, 255));
+		}
 	}
 }
 
 void Menu::moveDOWN() {
-	if (itemIndex + 1 < MAX_MENU_ITEMS) {
-		menuItem[itemIndex].setFillColor(sf::Color(255, 255, 255, 255));
-		itemIndex++;
-		menuItem[itemIndex].setFillColor(sf::Color(255, 0, 0, 255));
+	if (!settings) {
+		if (itemIndex + 1 < MAX_MENU_ITEMS) {
+			menuItem[itemIndex].setFillColor(sf::Color(255, 255, 255, 255));
+			itemIndex++;
+			menuItem[itemIndex].setFillColor(sf::Color(255, 0, 0, 255));
+		}
 	}
+	else {
+		if (settingsIndex + 1 < MAX_SETTINGS_ITEMS) {
+			settingsItem[settingsIndex].setFillColor(sf::Color(255, 255, 255, 255));
+			settingsIndex++;
+			settingsItem[settingsIndex].setFillColor(sf::Color(255, 0, 0, 255));
+		}
+	}
+	
 }
 
 void Menu::performAction(sf::RenderWindow& window) {
-	switch (itemIndex) {
-	case 0:
-		break;
-	case 1:
-		break;
-	case 2:
-		window.close();
-		break;
+	if (!settings) {
+		switch (itemIndex) {
+		case 0:
+			break;
+		case 1:
+			settings = true;
+			break;
+		case 2:
+			window.close();
+			break;
+		}
+	}
+	else {
+		switch (settingsIndex) {
+		case 0://resolution 
+			settingsResolution++;
+			if (settingsResolution >= MAX_RESOLUTION_ITEMS) settingsResolution = 0;
+			settingsItem[0].setString("Rozdzielczosc - " + std::to_string(resolutions[settingsResolution].width) + " x " + std::to_string(resolutions[settingsResolution].height) + " +");
+			window.setSize(sf::Vector2u(resolutions[settingsResolution].width, resolutions[settingsResolution].height));
+			break;
+		case 1://controlls
+			
+			break;
+		case 2://back to main menu
+			settings = false;
+			break;
+		}
 	}
 }
