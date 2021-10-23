@@ -5,8 +5,8 @@
 
 class Controlls {
 public:
-	Controlls();
+	Controlls(int pIndex);
 	~Controlls();
 private:
-
+	int playerIndex;
 };
