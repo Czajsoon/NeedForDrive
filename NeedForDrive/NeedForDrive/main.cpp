@@ -6,6 +6,7 @@
 int main() {
 	Engine engine;
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "NeedForDrive"); 
+	
 	Menu menu(window.getSize().x, window.getSize().y);
 	sf::Event event;
 	sf::Clock clock;

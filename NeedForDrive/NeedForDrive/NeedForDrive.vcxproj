@@ -145,16 +145,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Controlls.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Framerate.cpp" />
+    <ClCompile Include="KeyboardToString.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuInit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controlls.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Framerate.h" />
+    <ClInclude Include="KeyboardToString.h" />
     <ClInclude Include="Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
