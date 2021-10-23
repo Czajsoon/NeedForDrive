@@ -1,2 +1,67 @@
-﻿  Controlls.cpp
+﻿  Menu.cpp
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(28,45): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(38,78): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(38,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(49,78): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(49,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(59,78): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(59,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(69,86): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(69,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(79,86): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(79,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(89,86): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\Menu.cpp(89,48): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   NeedForDrive.vcxproj -> D:\SFML\NeedForDrive\Debug\NeedForDrive.exe

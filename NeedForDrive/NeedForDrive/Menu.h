@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Engine.h"
 #define MAX_MENU_ITEMS 3
 #define MAX_SETTINGS_ITEMS 3
 #define MAX_RESOLUTION_ITEMS 3
@@ -24,6 +24,8 @@ private:
 	int itemIndex;
 	int settingsResolution;
 	resolution resolutions[MAX_RESOLUTION_ITEMS];
+	sf::SoundBuffer soundBuffer;
+	sf::Sound sound;
 	sf::Texture backgroundImage;
 	sf::Sprite background;
 	sf::Font font;
