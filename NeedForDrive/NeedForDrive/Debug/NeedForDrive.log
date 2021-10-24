@@ -1,2 +1,54 @@
-﻿  Menu.cpp
+﻿  GameSettings.cpp
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(21,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(21,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(31,68): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(31,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(41,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(41,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(51,68): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(51,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(61,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\SFML\NeedForDrive\NeedForDrive\GameSettings.cpp(61,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Menu.cpp
+  Generating Code...
   NeedForDrive.vcxproj -> D:\SFML\NeedForDrive\Debug\NeedForDrive.exe

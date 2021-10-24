@@ -3,6 +3,8 @@
 #include <string.h>
 
 Menu::Menu(int width, int height) {
+	gameSet = false;
+	gameSettings = new GameSettings(width,height,gameSet);
 	controllIndex = 0;
 	playerIndex = 0;
 	settingsResolution = 0;
@@ -173,6 +175,7 @@ Menu::Menu(int width, int height) {
 }
 
 Menu::~Menu() {
-
+	if (gameSettings != NULL)
+		delete gameSettings;
 }
 

@@ -1,5 +1,7 @@
 #pragma once
 #include "Engine.h"
+#include "GameSettings.h"
+#include "Controlls.h"
 #define MAX_MENU_ITEMS 3
 #define MAX_SETTINGS_ITEMS 3
 #define MAX_RESOLUTION_ITEMS 3
@@ -11,13 +13,6 @@ struct resolution {
 	int height;
 };
 
-struct Controlls{
-	int playerIndex;
-	sf::Keyboard::Key forward;
-	sf::Keyboard::Key left;
-	sf::Keyboard::Key right;
-	sf::Keyboard::Key backward;
-};
 
 class Menu {
 public:
@@ -31,11 +26,13 @@ public:
 private:
 	bool settings;
 	bool control;
+	bool gameSet;
 	int settingsIndex;
 	int itemIndex;
 	int controllIndex;
 	int playerIndex;
 	int settingsResolution;
+	GameSettings* gameSettings;
 	resolution resolutions[MAX_RESOLUTION_ITEMS];
 	sf::SoundBuffer mainThermeMusicBuffer;
 	sf::SoundBuffer soundBuffer;

@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Framerate.cpp" />
+    <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="KeyboardToString.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Controlls.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Framerate.h" />
+    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="KeyboardToString.h" />
     <ClInclude Include="Menu.h" />
   </ItemGroup>
