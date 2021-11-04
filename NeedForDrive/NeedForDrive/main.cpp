@@ -26,6 +26,9 @@ int main() {
 				case sf::Keyboard::Enter:
 					menu.performAction(window);
 					break;
+				case sf::Keyboard::Escape:
+					window.close();
+					break;
 				}
 				break;
 			}

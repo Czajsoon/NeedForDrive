@@ -1,1 +1,2 @@
 D:\SFML\NeedForDrive\NeedForDrive\Debug\NeedForDrive.exe
+C:\Users\Dawid-PC\Documents\Projekt_grafika\NeedForDrive\NeedForDrive\NeedForDrive\Debug\NeedForDrive.exe
