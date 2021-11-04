@@ -3,6 +3,8 @@
 #include <string.h>
 
 Menu::Menu(int width, int height) {
+	gameSet = false;
+	gameSettings = new GameSettings(width,height,gameSet);
 	controllIndex = 0;
 	playerIndex = 0;
 	settingsResolution = 0;
@@ -59,7 +61,6 @@ Menu::Menu(int width, int height) {
 	sf::FloatRect text1 = menuItem[0].getLocalBounds();
 	menuItem[0].setOrigin(text1.width / 2, text1.height / 2);
 	menuItem[0].setPosition(sf::Vector2f(width / 2, height / (MAX_MENU_ITEMS * 1) * 0.5));
-
 
 	menuItem[1].setString("Ustawienia");
 	menuItem[1].setFillColor(sf::Color(255, 255, 255, 255));
@@ -173,6 +174,6 @@ Menu::Menu(int width, int height) {
 }
 
 Menu::~Menu() {
-
+	if (gameSettings != NULL)
+		delete gameSettings;
 }
-
