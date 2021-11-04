@@ -62,7 +62,6 @@ Menu::Menu(int width, int height) {
 	menuItem[0].setOrigin(text1.width / 2, text1.height / 2);
 	menuItem[0].setPosition(sf::Vector2f(width / 2, height / (MAX_MENU_ITEMS * 1) * 0.5));
 
-
 	menuItem[1].setString("Ustawienia");
 	menuItem[1].setFillColor(sf::Color(255, 255, 255, 255));
 	menuItem[1].setCharacterSize(70);
@@ -178,4 +177,3 @@ Menu::~Menu() {
 	if (gameSettings != NULL)
 		delete gameSettings;
 }
-

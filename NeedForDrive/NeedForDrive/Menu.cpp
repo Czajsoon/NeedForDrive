@@ -100,9 +100,7 @@ void Menu::performAction(sf::RenderWindow& window) {
 			switch (itemIndex) {
 			case 0:
 				sound.play();
-
 				gameSet = true;
-				cout << &gameSet << endl;
 				// game settings start
 				break;
 			case 1:

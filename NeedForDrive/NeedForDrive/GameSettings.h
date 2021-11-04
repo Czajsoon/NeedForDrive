@@ -8,8 +8,9 @@ struct Car {
 
 struct PlayersSet {
 	int numberOfPlayer;
+	int carNumber;
 	Controlls contollsSet;
-	sf::Texture playersCar;
+	sf::Sprite playersCar;
 };
 
 class GameSettings {
@@ -21,9 +22,14 @@ public:
 	void moveUP();
 	void moveDOWN();
 private:
+	int width;
+	int height;
 	int itemIndex;
+	int currentPlayer;
+	//int current;
 	bool* gameSet;
-	Car cars[4];
+	Car cars[3];
+	PlayersSet playerSet[3];
 	int numberOfPlayers;
 	sf::Font font;
 	sf::Text menuItems[5];
