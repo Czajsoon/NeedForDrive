@@ -19,7 +19,7 @@ public:
 	Menu(int height, int width);
 	~Menu();
 	void drawMenu(sf::RenderWindow& window);
-	void moveUP();
+		void moveUP();
 	void moveDOWN();
 	void performAction(sf::RenderWindow& window);
 	Controlls controlls[MAX_PLAYERS];
