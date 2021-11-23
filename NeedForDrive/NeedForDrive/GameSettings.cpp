@@ -7,6 +7,9 @@ GameSettings::GameSettings(int width, int height, bool& gameSett) {
 	cars[0].playersCar.loadFromFile("cars/1.png");
 	cars[1].playersCar.loadFromFile("cars/2.png");
 	cars[2].playersCar.loadFromFile("cars/3.png");
+	maps[0].playersMap.loadFromFile("maps/1x.png");
+	maps[1].playersMap.loadFromFile("maps/2x.png");
+	maps[2].playersMap.loadFromFile("maps/3x.png");
 	currentPlayer = 0;
 	gameSet = &gameSett;
 	if (!font.loadFromFile("upheavtt.ttf")) {
@@ -21,6 +24,15 @@ GameSettings::GameSettings(int width, int height, bool& gameSett) {
 		playerSet[i].playersCar.setScale(sf::Vector2f(0.5, 0.5));
 		playerSet[i].playersCar.setOrigin(playerSet[i].playersCar.getLocalBounds().width / 2, playerSet[i].playersCar.getLocalBounds().height / 2);
 		playerSet[i].playersCar.setPosition(100, this->height / 2);
+	}
+
+	for (int i = 0; i < 3; i++) {
+		playerSet[i].numberOfPlayer = i + 1;
+		playerSet[i].mapNumber = 0;
+		playerSet[i].playersMap.setTexture(maps[1].playersMap);
+		playerSet[i].playersMap.setScale(sf::Vector2f(0.38, 0.38));
+		playerSet[i].playersMap.setOrigin(playerSet[i].playersMap.getLocalBounds().width / 2, playerSet[i].playersMap.getLocalBounds().height / 2);
+		playerSet[i].playersMap.setPosition(1050, this->height / 2);
 	}
 
 	menuItems[0].setString("ilosc graczy: " + to_string(numberOfPlayers));
@@ -78,7 +90,7 @@ GameSettings::~GameSettings() {
 
 }
 
-void GameSettings::moveUP(){
+void GameSettings::moveUP() {
 	if (itemIndex - 1 >= 0) {
 		menuItems[itemIndex].setFillColor(sf::Color(255, 255, 255, 255));
 		itemIndex--;
@@ -95,19 +107,24 @@ void GameSettings::moveDOWN() {
 }
 
 void GameSettings::performAction() {
-	switch (itemIndex){
+	switch (itemIndex) {
 	case 0:
 		numberOfPlayers++;
 		if (numberOfPlayers > 3) numberOfPlayers = 2;
 		menuItems[0].setString("ilosc graczy: " + to_string(numberOfPlayers));
 		break;
 	case 1:
-		
+
 		break;
 	case 2:
 		playerSet[currentPlayer].carNumber++;
 		if (playerSet[currentPlayer].carNumber > 2) playerSet[currentPlayer].carNumber = 0;
 		playerSet[currentPlayer].playersCar.setTexture(cars[playerSet[currentPlayer].carNumber].playersCar);
+		break;
+	case 3:
+		playerSet[currentPlayer].mapNumber++;
+		if (playerSet[currentPlayer].mapNumber > 2) playerSet[currentPlayer].mapNumber = 0;
+		playerSet[currentPlayer].playersMap.setTexture(maps[playerSet[currentPlayer].mapNumber].playersMap);
 		break;
 	case 4:
 		*gameSet = false;
@@ -117,6 +134,7 @@ void GameSettings::performAction() {
 
 void GameSettings::draw(sf::RenderWindow& window) {
 	for (int i = 0; i < 5; i++) window.draw(menuItems[i]);
-	
+
 	window.draw(playerSet[currentPlayer].playersCar);
+	window.draw(playerSet[currentPlayer].playersMap);
 }
