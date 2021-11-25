@@ -4,24 +4,31 @@
 #include <iostream>
 
 void Menu::drawMenu(sf::RenderWindow& window) {
-	window.draw(background);
-	if (gameSet) {
-		gameSettings->draw(window);
+	
+	if (game) {
+		gameScreen->updatePosition();
+		gameScreen->draw(window);
 	}
 	else {
-		if (!settings) {
-			for (int i = 0; i < MAX_MENU_ITEMS; i++) {
-				window.draw(menuItem[i]);
-			}
-		}
-		else if (control) {
-			for (int i = 0; i < MAX_CONTROLLS_ITEMS; i++) {
-				window.draw(controllItems[i]);
-			}
+		window.draw(background);
+		if (gameSet) {
+			gameSettings->draw(window);
 		}
 		else {
-			for (int i = 0; i < MAX_SETTINGS_ITEMS; i++) {
-				window.draw(settingsItem[i]);
+			if (!settings) {
+				for (int i = 0; i < MAX_MENU_ITEMS; i++) {
+					window.draw(menuItem[i]);
+				}
+			}
+			else if (control) {
+				for (int i = 0; i < MAX_CONTROLLS_ITEMS; i++) {
+					window.draw(controllItems[i]);
+				}
+			}
+			else {
+				for (int i = 0; i < MAX_SETTINGS_ITEMS; i++) {
+					window.draw(settingsItem[i]);
+				}
 			}
 		}
 	}
@@ -34,7 +41,7 @@ void Menu::moveUP() {
 	else {
 		if (!settings) {
 			if (itemIndex - 1 >= 0) {
-				sound.play();
+				//sound.play();
 				menuItem[itemIndex].setFillColor(sf::Color(255, 255, 255, 255));
 				itemIndex--;
 				menuItem[itemIndex].setFillColor(sf::Color(255, 0, 0, 255));
@@ -42,15 +49,15 @@ void Menu::moveUP() {
 		}
 		else if (control) {
 			if (controllIndex - 1 >= 0) {
-				sound.play();
+				//sound.play();
 				controllItems[controllIndex].setFillColor(sf::Color(255, 255, 255, 255));
 				controllIndex--;
 				controllItems[controllIndex].setFillColor(sf::Color(255, 0, 0, 255));
 			}
 		}
-		else {
+		else if (mainMenu){
 			if (settingsIndex - 1 >= 0) {
-				sound.play();
+				//sound.play();
 				settingsItem[settingsIndex].setFillColor(sf::Color(255, 255, 255, 255));
 				settingsIndex--;
 				settingsItem[settingsIndex].setFillColor(sf::Color(255, 0, 0, 255));
@@ -66,7 +73,7 @@ void Menu::moveDOWN() {
 	else {
 		if (!settings) {
 			if (itemIndex + 1 < MAX_MENU_ITEMS) {
-				sound.play();
+				//sound.play();
 				menuItem[itemIndex].setFillColor(sf::Color(255, 255, 255, 255));
 				itemIndex++;
 				menuItem[itemIndex].setFillColor(sf::Color(255, 0, 0, 255));
@@ -74,15 +81,15 @@ void Menu::moveDOWN() {
 		}
 		else if (control) {
 			if (controllIndex + 1 < MAX_CONTROLLS_ITEMS) {
-				sound.play();
+				//sound.play();
 				controllItems[controllIndex].setFillColor(sf::Color(255, 255, 255, 255));
 				controllIndex++;
 				controllItems[controllIndex].setFillColor(sf::Color(255, 0, 0, 255));
 			}
 		}
-		else {
+		else if(mainMenu){
 			if (settingsIndex + 1 < MAX_SETTINGS_ITEMS) {
-				sound.play();
+				//sound.play();
 				settingsItem[settingsIndex].setFillColor(sf::Color(255, 255, 255, 255));
 				settingsIndex++;
 				settingsItem[settingsIndex].setFillColor(sf::Color(255, 0, 0, 255));
@@ -101,6 +108,7 @@ void Menu::performAction(sf::RenderWindow& window) {
 			case 0:
 				sound.play();
 				gameSet = true;
+				mainMenu = false;
 				// game settings start
 				break;
 			case 1:
@@ -118,20 +126,19 @@ void Menu::performAction(sf::RenderWindow& window) {
 			case 0:
 				sound.play();
 				playerIndex++;
-				if (playerIndex >= MAX_PLAYERS)
-					playerIndex = 0;
-				controllItems[0].setString("Gracz: " + std::to_string(controlls[playerIndex].playerIndex));
-				controllItems[1].setString("Przyspieszenie: " + fromKtoS(controlls[playerIndex].forward));
-				controllItems[2].setString("Hamulec: " + fromKtoS(controlls[playerIndex].backward));
-				controllItems[3].setString("Skret w lewo: " + fromKtoS(controlls[playerIndex].left));
-				controllItems[4].setString("Skret w prawo: " + fromKtoS(controlls[playerIndex].right));
+				if (playerIndex >= MAX_PLAYERS) playerIndex = 0;
+				controllItems[0].setString("Gracz: " + std::to_string(playersSet[playerIndex].numberOfPlayer));
+				controllItems[1].setString("Przyspieszenie: " + fromKtoS(playersSet[playerIndex].controlls.forward));
+				controllItems[2].setString("Hamulec: " + fromKtoS(playersSet[playerIndex].controlls.backward));
+				controllItems[3].setString("Skret w lewo: " + fromKtoS(playersSet[playerIndex].controlls.left));
+				controllItems[4].setString("Skret w prawo: " + fromKtoS(playersSet[playerIndex].controlls.right));
 				break;
 			case 1:
 				sound.play();
 				while (window.waitEvent(bind)) {
 					if (bind.KeyReleased) {
-						controlls[playerIndex].forward = bind.key.code;
-						controllItems[1].setString("Przyspieszenie: " + fromKtoS(controlls[playerIndex].forward));
+						playersSet[playerIndex].controlls.forward = bind.key.code;
+						controllItems[1].setString("Przyspieszenie: " + fromKtoS(playersSet[playerIndex].controlls.forward));
 						break;
 					}
 				}
@@ -140,8 +147,8 @@ void Menu::performAction(sf::RenderWindow& window) {
 				sound.play();
 				while (window.waitEvent(bind)) {
 					if (bind.KeyReleased) {
-						controlls[playerIndex].backward = bind.key.code;
-						controllItems[2].setString("Hamulec: " + fromKtoS(controlls[playerIndex].backward));
+						playersSet[playerIndex].controlls.backward = bind.key.code;
+						controllItems[2].setString("Hamulec: " + fromKtoS(playersSet[playerIndex].controlls.backward));
 						break;
 					}
 				}
@@ -150,8 +157,8 @@ void Menu::performAction(sf::RenderWindow& window) {
 				sound.play();
 				while (window.waitEvent(bind)) {
 					if (bind.KeyReleased) {
-						controlls[playerIndex].left = bind.key.code;
-						controllItems[3].setString("Skret w lewo : " + fromKtoS(controlls[playerIndex].left));
+						playersSet[playerIndex].controlls.left = bind.key.code;
+						controllItems[3].setString("Skret w lewo : " + fromKtoS(playersSet[playerIndex].controlls.left));
 						break;
 					}
 				}
@@ -160,8 +167,8 @@ void Menu::performAction(sf::RenderWindow& window) {
 				sound.play();
 				while (window.waitEvent(bind)) {
 					if (bind.KeyReleased) {
-						controlls[playerIndex].right = bind.key.code;
-						controllItems[3].setString("Skret w prawo : " + fromKtoS(controlls[playerIndex].right));
+						playersSet[playerIndex].controlls.right = bind.key.code;
+						controllItems[3].setString("Skret w prawo : " + fromKtoS(playersSet[playerIndex].controlls.right));
 						break;
 					}
 				}
@@ -172,7 +179,7 @@ void Menu::performAction(sf::RenderWindow& window) {
 				break;
 			}
 		}
-		else {
+		else if (mainMenu) {
 			switch (settingsIndex) {
 			case 0://resolution 
 				settingsResolution++;

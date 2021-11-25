@@ -6,13 +6,13 @@
 int main() {
 	Engine engine;
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "NeedForDrive"); 
+	window.setFramerateLimit(60);
 	
 	Menu menu(window.getSize().x, window.getSize().y);
 	sf::Event event;
 	sf::Clock clock;
 	
 	while (window.isOpen()) { 
-		
 		while (window.pollEvent(event)) {
 			switch (event.type) {
 			case sf::Event::KeyReleased: {

@@ -1,1 +1,7 @@
-﻿  NeedForDrive.vcxproj -> C:\Users\Dawid-PC\Documents\Projekt_grafika\NeedForDrive\NeedForDrive\Debug\NeedForDrive.exe
+﻿  Game.cpp
+D:\SFML\NeedForDrive\NeedForDrive\Game.cpp(18,43): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+  NeedForDrive.vcxproj -> D:\SFML\NeedForDrive\Debug\NeedForDrive.exe

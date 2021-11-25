@@ -3,25 +3,22 @@
 #include "Controlls.h"
 
 struct Car {
-	sf::Texture playersCar;
+	sf::Texture car;
 };
 
 struct Map {
-	sf::Texture playersMap;
+	sf::Texture map;
 };
 
-struct PlayersSet {
-	int numberOfPlayer;
-	int carNumber;
+
+struct MapSet {
 	int mapNumber;
-	Controlls contollsSet;
-	sf::Sprite playersCar;
 	sf::Sprite playersMap;
 };
 
 class GameSettings {
 public:
-	GameSettings(int width, int height, bool& gameSett);
+	GameSettings(int width, int height, bool& gameSett,bool& gameS,bool& mainMenu,sf::Texture& gameMap,PlayersSett* playersSett,int& pAmount);
 	~GameSettings();
 	void draw(sf::RenderWindow& window);
 	void performAction();
@@ -32,14 +29,20 @@ private:
 	int height;
 	int itemIndex;
 	int currentPlayer;
-	//int current;
+	int currentMap;
+	int* playersAmount;
+	bool* game;
 	bool* gameSet;
+	bool* menu;
+	sf::Texture* finalMap;
 	Car cars[3];
 	Map maps[3];
-	PlayersSet playerSet[3];
+	sf::Sprite playersCar;
+	PlayersSett* playerSet[3];
+	MapSet mapSet[3];
 	int numberOfPlayers;
 	sf::Font font;
-	sf::Text menuItems[5];
+	sf::Text menuItems[6];
 	sf::Sprite car;
 	sf::Sprite map;
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include "Engine.h"
 #include "GameSettings.h"
+#include "Game.h"
 #include "Controlls.h"
 #define MAX_MENU_ITEMS 3
 #define MAX_SETTINGS_ITEMS 3
@@ -13,26 +14,32 @@ struct resolution {
 	int height;
 };
 
-
 class Menu {
 public:
 	Menu(int height, int width);
 	~Menu();
 	void drawMenu(sf::RenderWindow& window);
-		void moveUP();
+	void moveUP();
 	void moveDOWN();
 	void performAction(sf::RenderWindow& window);
-	Controlls controlls[MAX_PLAYERS];
+	PlayersSett playersSet[MAX_PLAYERS];
+	Game* gameScreen;
 private:
+	bool mainMenu;
 	bool settings;
 	bool control;
 	bool gameSet;
+	bool game;
+	int heightW;
+	int widthW;
+	int playersAmount;
 	int settingsIndex;
 	int itemIndex;
 	int controllIndex;
 	int playerIndex;
 	int settingsResolution;
 	GameSettings* gameSettings;
+	sf::Texture gameMap;
 	resolution resolutions[MAX_RESOLUTION_ITEMS];
 	sf::SoundBuffer mainThermeMusicBuffer;
 	sf::SoundBuffer soundBuffer;

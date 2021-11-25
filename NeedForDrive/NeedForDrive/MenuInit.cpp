@@ -3,8 +3,13 @@
 #include <string.h>
 
 Menu::Menu(int width, int height) {
+	mainMenu = true;
+	game = false;
 	gameSet = false;
-	gameSettings = new GameSettings(width,height,gameSet);
+	widthW = width;
+	heightW = height;
+	gameSettings = new GameSettings(width,height,gameSet,game,mainMenu, gameMap, playersSet,playersAmount);
+	
 	controllIndex = 0;
 	playerIndex = 0;
 	settingsResolution = 0;
@@ -14,21 +19,22 @@ Menu::Menu(int width, int height) {
 	mainThermeMusic.setBuffer(mainThermeMusicBuffer);
 	mainThermeMusic.setVolume(20);
 	mainThermeMusic.play();
-	controlls[0].playerIndex = 1;
-	controlls[0].forward = sf::Keyboard::Key::Up;
-	controlls[0].backward = sf::Keyboard::Key::Down;
-	controlls[0].left = sf::Keyboard::Key::Left;
-	controlls[0].right = sf::Keyboard::Key::Right;
-	controlls[1].playerIndex = 2;
-	controlls[1].forward = sf::Keyboard::Key::W;
-	controlls[1].backward = sf::Keyboard::Key::S;
-	controlls[1].left = sf::Keyboard::Key::A;
-	controlls[1].right = sf::Keyboard::Key::D;
-	controlls[2].playerIndex = 3;
-	controlls[2].forward = sf::Keyboard::Key::Y;
-	controlls[2].backward = sf::Keyboard::Key::H;
-	controlls[2].left = sf::Keyboard::Key::G;
-	controlls[2].right = sf::Keyboard::Key::J;
+	playersSet[0].controlls.playerIndex = 1;
+	playersSet[0].controlls.forward = sf::Keyboard::Key::Up;
+	playersSet[0].controlls.backward = sf::Keyboard::Key::Down;
+	playersSet[0].controlls.left = sf::Keyboard::Key::Left;
+	playersSet[0].controlls.right = sf::Keyboard::Key::Right;
+	playersSet[0].controlls.playerIndex = 2;
+	playersSet[1].controlls.forward = sf::Keyboard::Key::W;
+	playersSet[1].controlls.backward = sf::Keyboard::Key::S;
+	playersSet[1].controlls.left = sf::Keyboard::Key::A;
+	playersSet[1].controlls.right = sf::Keyboard::Key::D;
+	playersSet[2].controlls.playerIndex = 3;
+	playersSet[2].controlls.forward = sf::Keyboard::Key::Y;
+	playersSet[2].controlls.backward = sf::Keyboard::Key::H;
+	playersSet[2].controlls.left = sf::Keyboard::Key::G;
+	playersSet[2].controlls.right = sf::Keyboard::Key::J;
+	gameScreen = new Game(widthW, heightW, game,mainMenu ,playersSet,gameMap, playersAmount);
 	resolutions[0].width = 1280;
 	resolutions[0].height = 720;
 	resolutions[1].width = 1920;
@@ -112,7 +118,7 @@ Menu::Menu(int width, int height) {
 	settingsItem[2].setOrigin(stext3.width / 2, stext3.height / 2);
 	settingsItem[2].setPosition(sf::Vector2f(width / 2, height / (MAX_SETTINGS_ITEMS * 1) * 1.5));
 
-	controllItems[0].setString("Gracz: " + std::to_string(controlls[0].playerIndex));
+	controllItems[0].setString("Gracz: " + std::to_string(playersSet[0].controlls.playerIndex));
 	controllItems[0].setFillColor(sf::Color(255, 0, 0, 255));
 	controllItems[0].setCharacterSize(40);
 	controllItems[0].setFont(font);
@@ -122,7 +128,7 @@ Menu::Menu(int width, int height) {
 	controllItems[0].setOrigin(ctext1.width / 2, ctext1.height / 2);
 	controllItems[0].setPosition(sf::Vector2f(width / 2, height / (MAX_SETTINGS_ITEMS * 1) * 0.25));
 
-	controllItems[1].setString("Przyspieszenie: " + fromKtoS(controlls[0].forward));
+	controllItems[1].setString("Przyspieszenie: " + fromKtoS(playersSet[0].controlls.forward));
 	controllItems[1].setFillColor(sf::Color(255, 255, 255, 255));
 	controllItems[1].setCharacterSize(40);
 	controllItems[1].setFont(font);
@@ -132,7 +138,7 @@ Menu::Menu(int width, int height) {
 	controllItems[1].setOrigin(ctext2.width / 2, ctext2.height / 2);
 	controllItems[1].setPosition(sf::Vector2f(width / 2, height / (MAX_SETTINGS_ITEMS * 1) * 0.5));
 
-	controllItems[2].setString("Hamulec: " + fromKtoS(controlls[0].backward));
+	controllItems[2].setString("Hamulec: " + fromKtoS(playersSet[0].controlls.backward));
 	controllItems[2].setFillColor(sf::Color(255, 255, 255, 255));
 	controllItems[2].setCharacterSize(40);
 	controllItems[2].setFont(font);
@@ -142,7 +148,7 @@ Menu::Menu(int width, int height) {
 	controllItems[2].setOrigin(ctext3.width / 2, ctext3.height / 2);
 	controllItems[2].setPosition(sf::Vector2f(width / 2, height / (MAX_SETTINGS_ITEMS * 1) * 0.75));
 
-	controllItems[3].setString("Skret w lewo: " + fromKtoS(controlls[0].left));
+	controllItems[3].setString("Skret w lewo: " + fromKtoS(playersSet[0].controlls.left));
 	controllItems[3].setFillColor(sf::Color(255, 255, 255, 255));
 	controllItems[3].setCharacterSize(40);
 	controllItems[3].setFont(font);
@@ -152,7 +158,7 @@ Menu::Menu(int width, int height) {
 	controllItems[3].setOrigin(ctext4.width / 2, ctext4.height / 2);
 	controllItems[3].setPosition(sf::Vector2f(width / 2, height / (MAX_SETTINGS_ITEMS * 1) * 1));
 
-	controllItems[4].setString("Skret w prawo: " + fromKtoS(controlls[0].right));
+	controllItems[4].setString("Skret w prawo: " + fromKtoS(playersSet[0].controlls.right));
 	controllItems[4].setFillColor(sf::Color(255, 255, 255, 255));
 	controllItems[4].setCharacterSize(40);
 	controllItems[4].setFont(font);

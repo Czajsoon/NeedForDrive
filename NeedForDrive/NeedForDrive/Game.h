@@ -1,0 +1,20 @@
+#pragma once
+#include "Engine.h"
+#include "Controlls.h"
+
+class Game {
+public:
+	Game(int width, int height, bool& game, bool& mainMenu,PlayersSett* playerSett, sf::Texture& map, int& pAmount);
+	~Game();
+	void draw(sf::RenderWindow& window);
+	void updatePosition();
+private:
+	sf::Sprite gameMapBackground;
+	int* playersAmount;
+	bool* workingGame;
+	bool* menu;
+	PlayersSett* playerSet[3];
+	sf::Texture* gameMap;
+	sf::Sprite cars[3];
+	sf::Texture carsTextures[3];
+};
