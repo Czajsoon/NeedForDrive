@@ -17,4 +17,9 @@ private:
 	sf::Texture* gameMap;
 	sf::Sprite cars[3];
 	sf::Texture carsTextures[3];
+	float speed[3], angle[3];
+	float maxSpeed[3];
+	float acc = 0.2f, dec = 0.3f;
+	float turnSpeed = 0.08f;
+	float x[3],y[3];
 };

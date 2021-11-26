@@ -15,5 +15,7 @@ struct PlayersSett {
 	int numberOfPlayer;
 	int carNumber;
 	sf::Texture car;
+	float angle;
+	float speed;
 	Controlls controlls;
 };
