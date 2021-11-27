@@ -3,6 +3,8 @@
 #include <cmath>
 #include <iostream>
 
+
+
 void Menu::drawMenu(sf::RenderWindow& window) {
 	
 	if (game) {

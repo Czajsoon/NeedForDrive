@@ -2,19 +2,38 @@
 #include "Engine.h"
 #include "Controlls.h"
 
+
+/*!
+* \brief Struktura przechowujaca teksture pojazdow.
+*/
+
 struct Car {
 	sf::Texture car;
 };
+
+/*!
+* \brief Struktura przechowujaca teksture map.
+*/
 
 struct Map {
 	sf::Texture map;
 };
 
 
+/*!
+* \brief Struktura przechowujaca teksture map, a takze ich numer, poniewaz jest do potrzebne do zmiany mapy przez uzytkownika.
+*/
+
 struct MapSet {
 	int mapNumber;
 	sf::Sprite playersMap;
 };
+
+
+/*!
+* \brief Klasa, ktora przyjmuje w konstruktorze parametry takie jak: rozdzielczosc, zmienna sprawdzajaca w jakim jestesmy menu, tekstury oraz liczbe graczy.
+* 
+*/
 
 class GameSettings {
 public:
@@ -46,3 +65,4 @@ private:
 	sf::Sprite car;
 	sf::Sprite map;
 };
+
