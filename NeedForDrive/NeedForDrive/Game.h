@@ -2,6 +2,15 @@
 #include "Engine.h"
 #include "Controlls.h"
 
+/*!
+* \brief  Klasa u¿ywana do ustawienia g³ównego okna z gr¹
+* Klasa przyjmuje parametry: 
+* width i height- wymiary okna
+* wskaŸniki na zmienne typu bool game i mainMenu- flagi do wyœwietlania gry i menu
+* strukturê PlayersSett
+* texturê mapy
+* wskaŸnik na zmienn¹ typu int- liczba graczy
+*/
 class Game {
 public:
 	Game(int width, int height, bool& game, bool& mainMenu,PlayersSett* playerSett, sf::Texture& map, int& pAmount);

@@ -1,6 +1,10 @@
 #pragma once
 #include "Engine.h"
 
+/*!
+* \brief  Klasa u¿ywana do zarz¹dzania czêstotliwoœci¹ wyœwietlania obrazu
+*/
+
 class FrameRate {
 public:
 	FrameRate(float time);
