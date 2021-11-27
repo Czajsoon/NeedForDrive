@@ -9,10 +9,22 @@
 #define MAX_CONTROLLS_ITEMS 6
 #define MAX_PLAYERS 3
 
+
+/*!
+* \brief Struktura przechowujaca rozdzielczosc (width*height).
+*/
+
+
 struct resolution {
 	int width;
 	int height;
 };
+
+
+/*!
+* \brief Klasa, ktora zawiera konstruktor oraz destruktur glownego Menu, a takze teksturki, muzyke oraz dzwieki w glownym menu wraz ze sterowaniem po nim.
+*
+*/
 
 class Menu {
 public:
