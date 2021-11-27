@@ -5,6 +5,7 @@
 #include "Collision.hpp"
 
 Game::Game(int width, int height, bool& game, bool& mainMenu, PlayersSett* playerSett, sf::Texture& map,int& pAmount) {
+	primitive = new PrimitiveRenderer();
 	flagMap = true;
 	workingGame = &game;
 	gameMap = &map;
@@ -30,10 +31,11 @@ Game::Game(int width, int height, bool& game, bool& mainMenu, PlayersSett* playe
 		playerSet[i] = &playerSett[i];
 		playerSet[i]->car = carsTextures[playerSet[i]->carNumber];
 		cars[i].setTexture(playerSet[i]->car);
-		cars[i].setScale(sf::Vector2f(0.15f, 0.15f));
+		cars[i].setScale(sf::Vector2f(0.1f, 0.1f));
 		cars[i].setOrigin(cars[i].getLocalBounds().height/2 , cars[i].getLocalBounds().width/2);
 	}
 	gameMapBackground.setTexture(*gameMap);
+
 }
 
 Game::~Game() {
@@ -45,6 +47,7 @@ void Game::draw(sf::RenderWindow& window) {
 	for (int i = 0; i < *playersAmount; i++) {
 		window.draw(cars[i]);
 	}
+	primitive->drawSpectators(window);
 }
 
 void Game::updatePosition() {

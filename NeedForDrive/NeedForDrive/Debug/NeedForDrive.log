@@ -1,5 +1,5 @@
 ﻿  Game.cpp
-D:\SFML\NeedForDrive\NeedForDrive\Game.cpp(28,20): warning C4305: '=': truncation from 'double' to 'float'
-D:\SFML\NeedForDrive\NeedForDrive\Game.cpp(55,49): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-D:\SFML\NeedForDrive\NeedForDrive\Game.cpp(55,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+D:\SFML\NeedForDrive\NeedForDrive\Game.cpp(29,20): warning C4305: '=': truncation from 'double' to 'float'
+D:\SFML\NeedForDrive\NeedForDrive\Game.cpp(58,49): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+D:\SFML\NeedForDrive\NeedForDrive\Game.cpp(58,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
   NeedForDrive.vcxproj -> D:\SFML\NeedForDrive\Debug\NeedForDrive.exe

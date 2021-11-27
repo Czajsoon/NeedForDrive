@@ -1,6 +1,7 @@
 #pragma once
 #include "Engine.h"
 #include "Controlls.h"
+#include "PrimitiveRenderer.h"
 
 class Game {
 public:
@@ -24,4 +25,5 @@ private:
 	float acc = 0.2f, dec = 0.3f;
 	float turnSpeed = 0.08f;
 	float x[3],y[3];
+	PrimitiveRenderer* primitive;
 };

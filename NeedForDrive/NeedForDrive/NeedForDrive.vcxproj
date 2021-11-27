@@ -154,6 +154,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuInit.cpp" />
+    <ClCompile Include="PrimitiveRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision.hpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="KeyboardToString.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="PrimitiveRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
