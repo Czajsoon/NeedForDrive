@@ -13,8 +13,10 @@ private:
 	int* playersAmount;
 	bool* workingGame;
 	bool* menu;
+	bool flagMap;
 	PlayersSett* playerSet[3];
 	sf::Texture* gameMap;
+	sf::Image image;
 	sf::Sprite cars[3];
 	sf::Texture carsTextures[3];
 	float speed[3], angle[3];
